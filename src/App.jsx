@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-
+import "./App.css";
 function App() {
   const SERVER_BASE_URL=import.meta.env.VITE_SERVER_BASE_URL
   // eslint-disable-next-line no-unused-vars
@@ -21,16 +21,16 @@ function App() {
   }, [fetchData]);
 return (
   <div>
-    <h1 style={{textAlign: "center", fontSize:"1.6rem", marginTop:"1rem"}}>What&apos;s on my list today?</h1>
-    <section style={{display: "flex", flexDirection:"column", justifyContent:"center", alignItems:"center", marginTop:"2rem"}}>
+    <h1>What&apos;s on my list today?</h1>
+    <section>
       {data && data.map(issue => {
-      return <div style={{display: "flex", minWidth:"350px", justifyContent:"space-between", padding:"1rem", backgroundColor:"#eee", marginBottom:"1rem"}} key={issue.id}>
-        <div style={{}}>
+      return <div className="issues" key={issue.id}>
+        <div>
           <div>{issue.summary}</div>
-          <small style={{color: "gray"}}>{issue.deadline}</small>
+          <small>{issue.deadline}</small>
         </div>
         <div>
-          <div style={{padding:"4px", border:"1px solid #000", borderRadius:"5px"}}>{issue.status}</div>
+          <div className="status">{issue.status}</div>
         </div>
       </div>
     })}
